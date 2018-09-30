@@ -1,0 +1,413 @@
+
+<?xml version="1.0"?>
+<robot name="JQRobot">
+
+  <link name="Body">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/Body.off" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707 0 3.14159" xyz="0.06357 -0.0462133 -0.09209696"/>
+    </visual>
+    <inertial>
+       <mass value="0.4223"/>
+       <origin rpy="0 0 0" xyz="0 0 0"/>
+       <inertia ixx="0.0009031557" ixy="0.0" ixz="0.0" iyy="0.0012354382" iyz="0.0" izz="0.0006479635"/>
+   </inertial>
+  </link>
+
+  <link name="Left_Shoulder">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/Left_Shoulder.off" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="-0.02725 -0.0125 0"/>
+    </visual>
+    <inertial>
+       <mass value="0.0087"/>
+       <origin rpy="0 0 0" xyz="0 0 0.00423081"/>
+       <inertia ixx="0.0000007698" ixy="0.0" ixz="0.0" iyy="0.0000036" iyz="0.0" izz="0.0000036"/>
+   </inertial>
+  </link>
+
+  <joint name="joint1" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="Body"/>
+    <child link="Left_Shoulder"/>
+    <origin rpy="-1.3962622 0 1.5707" xyz="-0.06197 -0.00321334 0.04295834"/>
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="Left_Arm">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/Left_Arm.off" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="0 -1.5707 0" xyz="0.01003172 -0.0105 -0.02010828"/>
+    </visual>
+    <inertial>
+       <mass value="0.135"/>
+       <origin rpy="0 0 0" xyz="-0.02621678 0.03595415 0"/>
+       <inertia ixx="0.000125" ixy="0.0" ixz="0.0" iyy="0.00003515445" iyz="0.0" izz="0.000125"/>
+   </inertial>
+  </link>
+
+  <joint name="joint2" type="continuous">
+    <axis xyz="1 0 0"/>
+    <parent link="Left_Shoulder"/>
+    <child link="Left_Arm"/>
+    <origin rpy="1.5707 0 0" xyz="0.02575 0 0.01950677"/>
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="Left_Hand">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/Left_Hand.off" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="-0.053 -0.02492555 -0.112"/>
+    </visual>
+    <inertial>
+       <mass value="0.0315"/>
+       <origin rpy="0 0 0" xyz="-0.02968938 0 -0.04614073"/>
+       <inertia ixx="0.00004" ixy="0.0" ixz="0.0" iyy="0.00004" iyz="0.0" izz="0.000009"/>
+   </inertial>
+  </link>
+
+  <joint name="joint3" type="continuous">
+    <axis xyz="1 0 0"/>
+    <parent link="Left_Arm"/>
+    <child link="Left_Hand"/>
+    <origin rpy="1.5707 0 0" xyz="0 0.072 0"/>
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="Right_Shoulder">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/Right_Shoulder.off" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="-0.02725 -0.0125 0"/>
+    </visual>
+    <inertial>
+       <mass value="0.0087"/>
+       <origin rpy="0 0 0" xyz="0 0 0.00423081"/>
+       <inertia ixx="0.0000007698" ixy="0.0" ixz="0.0" iyy="0.0000036" iyz="0.0" izz="0.0000036"/>
+   </inertial>
+  </link>
+
+  <joint name="joint4" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="Body"/>
+    <child link="Right_Shoulder"/>
+    <origin rpy="1.3962 0 1.5707" xyz="0.06197 -0.00321334 0.04295834"/>
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="Right_Arm">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/Right_Arm.off" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="0 -1.5707 0" xyz="0.01003172 -0.0105 -0.02010828"/>
+    </visual>
+    <inertial>
+       <mass value="0.135"/>
+       <origin rpy="0 0 0" xyz="-0.02621678 0.03595415 0"/>
+       <inertia ixx="0.0000125" ixy="0.0" ixz="0.0" iyy="0.00003515445" iyz="0.0" izz="0.000125"/>
+   </inertial>
+  </link>
+
+  <joint name="joint5" type="continuous">
+    <axis xyz="1 0 0"/>
+    <parent link="Right_Shoulder"/>
+    <child link="Right_Arm"/>
+    <origin rpy="1.5707 0 0" xyz="0.02575 0 0.01950677"/>
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="Right_Hand">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/Right_Hand.off" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="-0.053 -0.02492555 -0.112"/>
+    </visual>
+    <inertial>
+       <mass value="0.0315"/>
+       <origin rpy="0 0 0" xyz="-0.02968938 0 -0.04614073"/>
+       <inertia ixx="0.00004" ixy="0.0" ixz="0.0" iyy="0.00004" iyz="0.0" izz="0.000009"/>
+   </inertial>
+  </link>
+
+  <joint name="joint6" type="continuous">
+    <axis xyz="1 0 0"/>
+    <parent link="Right_Arm"/>
+    <child link="Right_Hand"/>
+    <origin rpy="1.5707 0 0" xyz="0 0.072 0"/>
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="Left_Hip">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/Left_Hip.off" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="-0.01061492 -0.04320621 -0.01377662"/>
+    </visual>
+    <inertial>
+       <mass value="0.0832"/>
+       <origin rpy="0 0 0" xyz="0.00268635 -0.010655 0.01458538"/>
+       <inertia ixx="0.00005" ixy="0.0" ixz="0.0" iyy="0.00005" iyz="0.0" izz="0.00005"/>
+   </inertial>
+  </link>
+
+  <joint name="joint7" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="Body"/>
+    <child link="Left_Hip"/>
+    <origin rpy="1.5707 1.5707 0" xyz="-0.03248444 0.02173666 -0.081596"/>
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="Left_Thigh">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/Left_Thigh.off" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="-0.0125 -0.058 -0.01711533"/>
+    </visual>
+    <inertial>
+       <mass value="0.077"/>
+       <origin rpy="0 0 0" xyz="0 -0.01304877 0.0262606"/>
+       <inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.000018" iyz="0.0" izz="0.000018"/>
+   </inertial>
+  </link>
+
+  <joint name="joint8" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="Left_Hip"/>
+    <child link="Left_Thigh"/>
+    <origin rpy="1.5707 -1.5707 0" xyz="0.035 0.0165 0.03225"/>
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="Left_Shank">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/Left_Shank.off" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="0 0 3.1415926" xyz="0.0163373 0.01046392 -0.01239201"/>
+    </visual>
+    <inertial>
+       <mass value="0.1381"/>
+       <origin rpy="0 0 0" xyz="0 -0.0329934 0.02638657"/>
+       <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.000037987" iyz="0.0" izz="0.0001"/>
+   </inertial>
+  </link>
+
+  <joint name="joint9" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="Left_Thigh"/>
+    <child link="Left_Shank"/>
+    <origin rpy="0 0 0" xyz="0 -0.0555 0.001"/>
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="Left_Ankle">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/Left_Ankle.off" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="-1.5707 0 -1.5707" xyz="-0.05740115 0.003 0.05652744"/>
+    </visual>
+    <inertial>
+       <mass value="0.0892"/>
+       <origin rpy="0 0 0" xyz="-0.00688525 -0.0340719 0.02590533"/>
+       <inertia ixx="0.00003" ixy="0.0" ixz="0.0" iyy="0.00003" iyz="0.0" izz="0.00003"/>
+   </inertial>
+  </link>
+
+  <joint name="joint10" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="Left_Shank"/>
+    <child link="Left_Ankle"/>
+    <origin rpy="0 0 0" xyz="0 -0.066 0.00"/>
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+
+  <link name="Left_Foot">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/Left_Foot.off" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="-1.5707 0 -1.5707" xyz="-0.11284738 0.02831368 0.03925"/>
+    </visual>
+    <inertial>
+       <mass value="0.0636"/>
+       <origin rpy="0 0 0" xyz="-0.02343266 -0.0207999 -0.02575090"/>
+       <inertia ixx="0.00015" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.00005"/>
+   </inertial>
+  </link>
+
+  <joint name="joint11" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="Left_Ankle"/>
+    <child link="Left_Foot"/>
+    <origin rpy="-1.5707 0 1.5707" xyz="-0.03325 -0.035 0.0165"/>
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="Right_Hip">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/Right_Hip.off" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="-0.038 -0.04285755 -0.02311395"/>
+    </visual>
+    <inertial>
+       <mass value="0.0832"/>
+       <origin rpy="0 0 0" xyz="-0.00268635 -0.010655 0.01458538"/>
+       <inertia ixx="0.00005" ixy="0.0" ixz="0.0" iyy="0.00005" iyz="0.0" izz="0.00005"/>
+   </inertial>
+  </link>
+
+  <joint name="joint12" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="Body"/>
+    <child link="Right_Hip"/>
+    <origin rpy="0 -1.5707 1.5707" xyz="0.03248444 0.02173666 -0.081596"/>
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="Right_Thigh">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/Right_Thigh.off" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="-0.0125 -0.058 -0.01711533"/>
+    </visual>
+    <inertial>
+       <mass value="0.077"/>
+       <origin rpy="0 0 0" xyz="0 -0.01304877 0.0262606"/>
+       <inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.000018" iyz="0.0" izz="0.000018"/>
+   </inertial>
+  </link>
+
+  <joint name="joint13" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="Right_Hip"/>
+    <child link="Right_Thigh"/>
+    <origin rpy="1.5707 1.5707 0" xyz="-0.035 0.0165 0.03225"/>
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="Right_Shank">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/Right_Shank.off" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="0 0 3.1415926" xyz="0.0163373 0.01046392 -0.01239201"/>
+    </visual>
+    <inertial>
+       <mass value="0.1381"/>
+       <origin rpy="0 0 0" xyz="0 -0.0329934 0.02638657"/>
+       <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.000037987" iyz="0.0" izz="0.0001"/>
+   </inertial>
+  </link>
+
+  <joint name="joint14" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="Right_Thigh"/>
+    <child link="Right_Shank"/>
+    <origin rpy="0 0 0" xyz="0 -0.0555 0.001"/>
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="Right_Ankle">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/Right_Ankle.off" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="-0.05797033 -0.0545 -0.045799060"/>
+    </visual>
+    <inertial>
+       <mass value="0.0892"/>
+       <origin rpy="0 0 0" xyz="-0.0340719 -0.02590533 -0.00688525"/>
+       <inertia ixx="0.00003" ixy="0.0" ixz="0.0" iyy="0.00003" iyz="0.0" izz="0.00003"/>
+   </inertial>
+  </link>
+
+  <joint name="joint15" type="continuous">
+    <axis xyz="0 1 0"/>
+    <parent link="Right_Shank"/>
+    <child link="Right_Ankle"/>
+    <origin rpy="-1.5707 0 1.5707" xyz="0 -0.066 0.00"/>
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="Right_Foot">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/Right_Foot.off" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="-0.02831368 -0.09075 -0.11284738"/>
+    </visual>
+    <inertial>
+       <mass value="0.0636"/>
+       <origin rpy="0 0 0" xyz="0.0207999 -0.02575090 -0.02343266"/>
+       <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.00005" iyz="0.0" izz="0.00015"/>
+   </inertial>
+  </link>
+
+  <joint name="joint16" type="continuous">
+    <axis xyz="0 1 0"/>
+    <parent link="Right_Ankle"/>
+    <child link="Right_Foot"/>
+    <origin rpy="-1.5707 0 -1.5707" xyz="-0.035 -0.0165 -0.03325"/>
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="Head">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/Head.off" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707 0 0" xyz="-0.063 0.04113530 0"/>
+    </visual>
+    <inertial>
+       <mass value="0.1531"/>
+       <origin rpy="0 0 0" xyz="0 0.009 0.04"/>
+       <inertia ixx="0.0002" ixy="0.0" ixz="0.0" iyy="0.0002" iyz="0.0" izz="0.0002"/>
+   </inertial>
+  </link>
+
+  <joint name="joint17" type="fixed">
+    <axis xyz="0 1 0"/>
+    <parent link="Body"/>
+    <child link="Head"/>
+    <origin rpy="0 0 3.14159" xyz="0 0.00541167 0.05445394"/>
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <klampt package_root="./" flip_yz="0" use_vis_geom="1"  >
+  </klampt>
+</robot>

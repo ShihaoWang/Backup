@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<world>
+  <robot name="JQrobot" file="/home/shihao/Desktop/JQRobot_URDF/JQRobot.rob" config="23 0 0 0.5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0"/>
+  <terrain file="/home/shihao/Klampt/data/terrains/plane.off" translation= "0.0 0.0 0.0"/>
+  <terrain file="/home/shihao/Klampt/data/terrains/cube.off" scale="1 1 2" translation="5 -0.5 0.0">
+     <display color="0.4 0.3 0.2"/>
+  </terrain>
+  <target position="-0.5 0 0.2" />
+  <simulation>
+     <object index="0">
+       <geometry padding="0.005" />
+     </object>
+     <globals adaptiveTimeStepping="0"/>
+  </simulation>
+</world>
